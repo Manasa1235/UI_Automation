@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Surefire test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Jul 24 14:44:02 CEST 2025</td>
+<td>Started on:</td><td>Thu Jul 24 21:00:41 CEST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>9 seconds (9253 ms)</td>
+<tr><td>Total time:</td><td>10 seconds (10109 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -78,15 +78,15 @@ function toggleAllBoxes() {
 <tr>
 <td title='testRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: testRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Place an order without adding product to cart", "End to End Testing"</td>
 <td><div><pre>java.lang.AssertionError: Navigated to checkout without adding any items expected [true] but found [false]
-	at stepDefinitions.LoginSteps.userDoNotAddProductToCartAndPlaceOrder(LoginSteps.java:87)
-	at ?.User do not add product to cart and place order(file:///E:/Manasa/Interview/Selenium_Java_Automation/Exact_Automation_Assesment/src/test/resources/features/Testing.feature:21)
-... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace936546050", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace936546050'><pre>java.lang.AssertionError: Navigated to checkout without adding any items expected [true] but found [false]
+	at stepDefinitions.EndToEndSteps.userDoNotAddProductToCartAndPlaceOrder(EndToEndSteps.java:28)
+	at ?.User do not add product to cart and place order(file:///E:/Manasa/Interview/Selenium_Java_Automation/Exact_Automation_Assesment/src/test/resources/features/Testing.feature:18)
+... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1518868172", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1518868172'><pre>java.lang.AssertionError: Navigated to checkout without adding any items expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at stepDefinitions.LoginSteps.userDoNotAddProductToCartAndPlaceOrder(LoginSteps.java:87)
-	at ?.User do not add product to cart and place order(file:///E:/Manasa/Interview/Selenium_Java_Automation/Exact_Automation_Assesment/src/test/resources/features/Testing.feature:21)
+	at stepDefinitions.EndToEndSteps.userDoNotAddProductToCartAndPlaceOrder(EndToEndSteps.java:28)
+	at ?.User do not add product to cart and place order(file:///E:/Manasa/Interview/Selenium_Java_Automation/Exact_Automation_Assesment/src/test/resources/features/Testing.feature:18)
 </pre></div></td>
 <td>2</td>
 <td>testRunners.TestRunner@1817d444</td></tr>
@@ -100,9 +100,24 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='testRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: testRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Valid login", "Login"</td>
+<td></td>
+<td>1</td>
+<td>testRunners.TestRunner@1817d444</td></tr>
+<tr>
+<td title='testRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: testRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Invalid login", "Login"</td>
+<td></td>
+<td>1</td>
+<td>testRunners.TestRunner@1817d444</td></tr>
+<tr>
 <td title='testRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: testRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Place an order with all valid details", "End to End Testing"</td>
 <td></td>
-<td>4</td>
+<td>2</td>
+<td>testRunners.TestRunner@1817d444</td></tr>
+<tr>
+<td title='testRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: testRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate Locked out User", "Login"</td>
+<td></td>
+<td>1</td>
 <td>testRunners.TestRunner@1817d444</td></tr>
 </table><p>
 </body>

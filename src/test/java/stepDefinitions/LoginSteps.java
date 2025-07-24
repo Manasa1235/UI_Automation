@@ -3,32 +3,33 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
 import org.apache.log4j.Logger;
-import util.Hooks;
+import utility.CommonFunctions;
 import utility.TestLogger;
 import utility.WebDriverManager;
 
-import java.util.HashMap;
-import java.util.Map;
+/**
+ * Step Definitions for login functionality.
+ * Each method is mapped to a Gherkin step from the feature file.
+ */
 
 public class LoginSteps {
     public static WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
+    CommonFunctions functions;
     Logger log = Logger.getLogger(LoginSteps.class);
 
     @Given("user is on SauceDemo login page")
     public void user_is_on_login_page() {
         driver = WebDriverManager.getDriver();
-        TestLogger.setDriver(driver);
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
+        TestLogger.setDriver(driver);
         log.info("Navigated to SauceDemo login page");
     }
 
@@ -36,7 +37,7 @@ public class LoginSteps {
     public void user_enters_valid_credentials(String username, String password) {
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
-//        log.info("Entered valid username and password");
+        log.info("Entered valid username and password");
         TestLogger.screenshot("Entered valid username and password");
     }
 
@@ -50,7 +51,7 @@ public class LoginSteps {
     public void user_should_be_navigated_to_homepage() {
         homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isProductsPageDisplayed());
-//        log.info("Successfully landed on homepage");
+        log.info("Successfully landed on homepage");
     }
 
     @When("user enters invalid username {string} and password {string}")
@@ -63,7 +64,7 @@ public class LoginSteps {
     public void login_should_fail() {
 
         Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo"));
-//        log.info("Login failed as expected");
+        log.info("Login failed as expected");
         TestLogger.screenshot("Entered invalid username and password");
         driver.quit();
     }
@@ -73,18 +74,5 @@ public class LoginSteps {
         Assert.assertTrue(loginPage.validateErrorMessage(error_message));
         TestLogger.screenshot("Screenshot:");
         driver.quit();
-    }
-
-    @When("User adds product to cart and place order")
-    public void userAddsProductToCartAndPlaceOrder() {
-        homePage.placeValidOrder();
-        TestLogger.screenshot("Screenshot");
-        driver.quit();
-    }
-
-    @When("User do not add product to cart and place order")
-    public void userDoNotAddProductToCartAndPlaceOrder() {
-        Assert.assertTrue(homePage.invalidOrder(),"Navigated to checkout without adding any items");
-        TestLogger.screenshot("Navigated to checkout without adding any items");
     }
 }

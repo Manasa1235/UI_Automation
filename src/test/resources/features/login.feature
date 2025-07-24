@@ -1,6 +1,9 @@
-#Author : Manasa
+# Author : Manasa
+# Contains scenarios related to login Page
+
 Feature: Login
 
+  #Positive
   Scenario Outline: Valid login
     Given user is on SauceDemo login page
     When user enters valid username "<username>" and password "<password>"
@@ -10,6 +13,7 @@ Feature: Login
     |username     |password    |
     |standard_user|secret_sauce|
 
+  #Negative
   Scenario Outline: Invalid login
     Given user is on SauceDemo login page
     When user enters invalid username "<username>" and password "<password>"
@@ -19,6 +23,7 @@ Feature: Login
       |username     |password    |
       |standard|secret_sauce|
 
+  #Negative
   Scenario Outline: Validate Locked out User
     Given user is on SauceDemo login page
     When user enters invalid username "<username>" and password "<password>"

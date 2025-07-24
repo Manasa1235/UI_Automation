@@ -1,12 +1,16 @@
 
 package pages;
 
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utility.CommonFunctions;
 import utility.TestLogger;
 
+/**
+ * Page Object for SauceDemo End-to-End Tests.
+ * This class contains all element locators and logic
+ * related to perform actions inside the application.
+ */
 public class HomePage {
     WebDriver driver;
     CommonFunctions functions;
@@ -35,53 +39,52 @@ public class HomePage {
         return functions.isElementDisplayed(productsTitle);
     }
 
-    public void clickOnAddToCartButton(){
+    public void clickOnAddToCartButton() {
         functions.click(addToCartButton);
     }
 
-    public void addUserDetials(){
-        functions.enterText(firstName,"Manasa");
-        functions.enterText(lastName,"Subramanyam");
-        functions.enterText(zipCode,"303");
+    public void addUserDetials() {
+        functions.enterText(firstName, "Manasa");
+        functions.enterText(lastName, "Subramanyam");
+        functions.enterText(zipCode, "303");
         functions.click(continueButton);
     }
 
-    public void placeValidOrder(){
+    public void placeValidOrder() {
         this.clickOnAddToCartButton();
         functions.click(cartIcon);
-        if(functions.getText(productInCart).equals("Sauce Labs Backpack")){
+        if (functions.getText(productInCart).equals("Sauce Labs Backpack")) {
             TestLogger.screenshot("Product is added to cart");
             functions.click(checkoutButton);
             this.addUserDetials();
             functions.click(finishButton);
-            if(functions.getText(completeOrder).equals("Thank you for your order!")){
+            if (functions.getText(completeOrder).equals("Thank you for your order!")) {
                 TestLogger.log("Order is placed and received a message - Thank you for your order!");
-            }else{
+            } else {
                 TestLogger.log("Error - Order is not placed!");
             }
-        }
-        else{
+        } else {
             TestLogger.log("Product not added to cart..!!!");
         }
     }
 
-    public boolean invalidOrder(){
-        boolean flag= true;
+    public boolean invalidOrder() {
+        boolean flag = true;
         functions.click(cartIcon);
         TestLogger.screenshot("Cart Page");
         functions.click(checkoutButton);
-        if(functions.isElementDisplayed(checkoutInfo)){
+        if (functions.isElementDisplayed(checkoutInfo)) {
             TestLogger.screenshot("Navigated to checkout without adding any items");
             flag = false;
         }
         return flag;
     }
 
-    public String verifyItemsInCart(){
+    public String verifyItemsInCart() {
         if (functions.isElementDisplayed(cartItem)) {
             TestLogger.log("No items in cart ");
             return "Yes";
-        }else{
+        } else {
             return "No";
         }
     }

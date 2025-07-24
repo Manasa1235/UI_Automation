@@ -3,11 +3,10 @@ package util;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import stepDefinitions.LoginSteps;
 import utility.TestLogger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static stepDefinitions.LoginSteps.driver;
 
@@ -16,6 +15,7 @@ public class Hooks {
 
     @Before
     public void beforeScenario(Scenario scenario) {
+        Logger.getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
         currentScenario = scenario;
         TestLogger.initScenario(scenario);
     }

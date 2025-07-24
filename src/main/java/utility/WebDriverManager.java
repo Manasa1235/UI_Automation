@@ -12,6 +12,10 @@ import java.util.Map;
 
 public class WebDriverManager {
 
+    // Create the driver
+    // Based on Input chrome or firefox browser is selected, if nothing selected by default chrome is used
+    // If any preferences to chrome or firefox can be set in this method
+    // Also can set headless mode true or false
     public static WebDriver getDriver() {
         String browser = System.getProperty("browser", System.getenv().getOrDefault("BROWSER", "chrome"));
         boolean headless = Boolean.parseBoolean(System.getProperty("headless",
@@ -22,13 +26,13 @@ public class WebDriverManager {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
 
-            // Custom prefs for Chrome
+            // Custom preferances for Chrome
             Map<String, Object> prefs = new HashMap<>();
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
             options.setExperimentalOption("prefs", prefs);
 
-            // Incognito + headless options
+            // Incognito and headless options
             options.addArguments("--incognito");
             if (headless) {
                 options.addArguments("--headless=new");
@@ -52,7 +56,8 @@ public class WebDriverManager {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
 
-        TestLogger.setDriver(driver); // ✅ Logging support
+        //Logging support
+        TestLogger.setDriver(driver);
         return driver;
     }
 }
